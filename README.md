@@ -12,7 +12,7 @@ Possiamo pensare di analizzare la stringa carattere per carattere. Se viene trov
   <img src="/asset_ft_printf%20-%20Bonus%20Track/Immagine2025-02-03-164221.png" alt="Schema">
 </p>
 
-L'idea è quella di realizzare una struttura che ci potrà essere di aiuto. La struttura dovrà avere 4 campi. Nel dettaglio sarà così composta:
+L'idea è quella di realizzare una struttura che ci potrà essere di aiuto. La struttura dovrà avere 5 campi. Nel dettaglio sarà così composta:
 
 ```c
 typedef struct s_placeholder
