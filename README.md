@@ -8,7 +8,7 @@ int ft_printf(const char *str, ...)    #prototipo della funzione
 
 Possiamo pensare di analizzare la stringa carattere per carattere. Se viene trovato il segnaposto '%'' allora si procede all’analisi del segnaposto e si fa la conversione dell’argomento passato come parametro variabile.
 
-[pippo](asset_ft_printf%-%Bonus%Track/Immagine2025-02-03-164221.png)
+![]([asset_ft_printf%-%Bonus%Track/Immagine2025-02-03-164221.png](https://github.com/gmarra83/ft_printf/blob/main/asset_ft_printf%20-%20Bonus%20Track/Immagine2025-02-03-164221.png?raw=true))
 
 L'idea è quella di realizzare una struttura che ci potrà essere di aiuto. La struttura dovrà avere 4 campi. Nel dettaglio sarà così composta:
 
