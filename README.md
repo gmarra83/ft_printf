@@ -217,5 +217,8 @@ Le funzioni ausiliarie sono contenute nei files:
   //ftpf_strchr: cerca il carattere c all'interno di str partendo dall'inizio
   char    *ftpf_strchr(const char *str, int c)
   ```
-
 **NB**: dato che per questo progetto NON ho utilizzato la libreria *libft*, le funzioni in comune che non sono dichiarate statiche sono state rinominate da *ft_* a *ftpf_* così da evitare problemi di linker in caso un domani si integrassero i sorgenti in *libft* facendo una libreria unica.
+
+---
+
+# Se ti è piaciuto il progetto e ti è stato utile mettimi una :star2:
