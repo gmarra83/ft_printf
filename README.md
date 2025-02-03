@@ -1,6 +1,6 @@
 # ft_printf - Bonus Track
 
-## ft_printf.c
+## [ft_printf.c](ft_printf.c)
 
 ```c
 int ft_printf(const char *str, ...)    #prototipo della funzione
@@ -37,7 +37,7 @@ In pratica dall'analisi del formato otterrò:
 
 - `*str` la stringa convertita MA non formattata 
 
-Per settare, resettare e valutare i bit presenti nella bitmask sono state implementate 3 funzioni inline:
+Per settare, resettare e valutare i bit presenti nella bitmask sono state implementate 3 funzioni inline nel file [ft_printf.h](ft_printf.h):
 
 ```c
 static inline void    set_bit(unsigned int *mask, unsigned int bit_pos)
@@ -61,15 +61,15 @@ Per andare a manipolare la bitmask in maniera più comoda si è utilizzata una e
 ```c
 enum e_bitmask
 {
-    MINUS = 0,    #flag '-', allineamento a sx
-    PLUS = 1,     #flag '+', esplicita il segno '+' con i num positivi   
-    SPACE = 2,    #flag ' ', mette uno ' ' ai numeri positivi
-    ZERO = 3,     #flag '0', mette '0' sulle cifre mancanti secondo width
-    HASHTAG = 4,  #flag '#', mette 
-    WIDTH = 5,
-    DOT = 6,
-    IS_ZERO = 7,
-    IS_NEG = 8
+    MINUS = 0,    //flag '-', allineamento a sx
+    PLUS = 1,     //flag '+', esplicita il segno '+' con i num positivi   
+    SPACE = 2,    //flag ' ', mette uno ' ' ai numeri positivi
+    ZERO = 3,     //flag '0', mette '0' sulle cifre mancanti secondo width
+    HASHTAG = 4,  //flag '#', mette 
+    WIDTH = 5,    //flag che si attiva se presente la width
+    DOT = 6,      //flag che si attiva se presente la precision
+    IS_ZERO = 7,  //flag che si attiva se viene passato un carattere '\0'
+    IS_NEG = 8    //flag che si attiva se un numero ha segno '-'
 };
 ```
 
@@ -108,7 +108,7 @@ La funzione in oggetto chiama diverse funzioni di helper. Nello specifico il flu
 
 ---
 
-## ft_printf_utils_parsing.c
+## [ft_printf_utils_parsing.c](ft_printf_utils_parsing.c)
 
 In questo file sono presenti le funzioni che si occuperanno di fare il parsing dei flags con la stringa convertita andandola a modificare. La funzione principale è:
 
@@ -122,7 +122,7 @@ la quale gestisce i valori NULL sia di stringhe che di puntatori e chiama altre 
    
    ![](asset_ft_printf%20-%20Bonus%20Track/2025-02-03-15-38-32-image.png)
    
-   Per questo motivo nel file .h andiamo a definire un enum con i seguenti valori
+   Per questo motivo nel file [ft_printf.h](ft_printf.h) andiamo a definire un enum con i seguenti valori
    
    ```c
    enum e_typemask
@@ -151,7 +151,7 @@ la quale gestisce i valori NULL sia di stringhe che di puntatori e chiama altre 
 
 Le funzioni ausiliarie sono contenute nei files:
 
-- **ft_printf_utils.c** --> Racchiude al suo interno diverse funzionalità di utilizzo generale. In particolar modo:
+- **[ft_printf_utils.c](ft_printf_utils.c)** --> Racchiude al suo interno diverse funzionalità di utilizzo generale. In particolar modo:
   
   ```c
   //ft_memmove: sposta n bytes da src a dst
@@ -172,7 +172,7 @@ Le funzioni ausiliarie sono contenute nei files:
               unsigned int flgmask)
   ```
 
-- **ft_printf_utils_conv.c** --> al suo interno sono presenti le funzioni per poter fare la conversione degli argomenti. nello specifico:
+- **[ft_printf_utils_conv.c](ft_printf_utils_conv.c)** --> al suo interno sono presenti le funzioni per poter fare la conversione degli argomenti. nello specifico:
   
   ```c
   //convert_arg: si occupa di indirizzare la chiamata alla conversione da
@@ -188,19 +188,17 @@ Le funzioni ausiliarie sono contenute nei files:
   //conv_chr: crea una stringa composta da un solo carattere char
   static char    *conv_chr(char charnum)
   ```
+  NB: da notare che la gestione dei numeri (%p, %d, %i, %u, %x, %X) viene effettuata tramite una union definita così nel file [ft_printf.h](ft_printf.h):
 
-```
-NB: da notare che la gestione dei numeri (%p, %d, %i, %u, %x, %X) viene effettuata tramite una union definita così nel file .h:
-
-```c
-typedef union u_numbers
-{
+  ```c
+  typedef union u_numbers
+  {
     int            i;
-    uintptr_t   u;     #rappresenta un tipo di dato per gli indirizzi di memoria, uso questo perchè sicuro conterrà la dimensione massima che è data dall'indirizzo di un puntatore
-}    t_convtypenum;
-```
+    uintptr_t   u;     //rappresenta un tipo di dato per gli indirizzi di memoria, uso questo perchè sicuro conterrà la dimensione massima che è data     dall'indirizzo di un puntatore
+  }    t_convtypenum;
+  ```
 
-- **ft_printf_utils_str.c** --> qui sono presenti le funzioni utili nella gestione delle stringhe. In particolare:
+- **[ft_printf_utils_str.c](ft_printf_utils_str.c)** --> qui sono presenti le funzioni utili nella gestione delle stringhe. In particolare:
   
   ```c
   //ftpf_strdup: crea un duplicato della stringa s
