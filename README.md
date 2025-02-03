@@ -221,4 +221,4 @@ Le funzioni ausiliarie sono contenute nei files:
 
 ---
 
-# Ti è piaciuto il progetto e ti è stato utile? Metti una :star2:
+# Ti è piaciuto il progetto e ti è stato utile? :star2: : :broken_heart:
