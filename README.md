@@ -8,18 +8,7 @@ int ft_printf(const char *str, ...)    #prototipo della funzione
 
 Possiamo pensare di analizzare la stringa carattere per carattere. Se viene trovato il segnaposto '%'' allora si procede all’analisi del segnaposto e si fa la conversione dell’argomento passato come parametro variabile.
 
-```flowchart
-st=>start: Start
-op=>operation: String Iteration
-op2=>operation: run_format_eval Fnc
-op3=>operation: Print
-cond=>condition: Found '%'?
-e=>end: Fine
-
-st->op->cond
-cond(no)->op3
-cond(yes)->op2->op3
-```
+![](asset_ft_printf%20-%20Bonus%20Track/Immagine 2025-02-03 164221.png)
 
 L'idea è quella di realizzare una struttura che ci potrà essere di aiuto. La struttura dovrà avere 4 campi. Nel dettaglio sarà così composta:
 
