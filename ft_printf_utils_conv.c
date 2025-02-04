@@ -73,7 +73,7 @@ char	*convert_arg(int format_type, va_list args, unsigned int *flgmask)
 	t_convtypenum	value;
 	unsigned int	base;
 
-	value = (t_convtypenum){0};
+	value.u = 0;
 	conv_str = NULL;
 	base = 10;
 	if (format_type == TYPE_C)
